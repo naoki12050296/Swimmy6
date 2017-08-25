@@ -6,10 +6,10 @@ public class Main {
 		Iphone7 phone = new Iphone7();
 
 		//音声通話する
-		phone.voiceCall();
+		phone.Call("本田尚大");
 
 		//LINE電話する
-		phone.lineCall();
+		phone.Call(1205);
 
 		//音楽をダウンロードする
 		phone.downloadMusic();
