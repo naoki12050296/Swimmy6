@@ -3,19 +3,29 @@ package AbstractAndInterface;
 public class Main {
 
 	public static void main(String[] args) {
-		Iphone7 phone = new Iphone7();
+
+		Iphone7 iphone7 = new Iphone7();
 
 		//音声通話する
-		phone.Call("本田尚大");
+		iphone7.Call("本田尚大");
 
 		//LINE電話する
-		phone.Call(1205);
+		iphone7.Call(1205);
 
 		//音楽をダウンロードする
-		phone.downloadMusic();
+		iphone7.downloadMusic();
 
 		//お会計をする
-		phone.pay();
+		iphone7.pay();
+
+		//Suicaクラスをインスタンス化
+		Suica suica = new Suica();
+
+		//ApplePayにSuicaを登録
+		suica.applePaySuicaRegist(iphone7);
+
+		//Suicaにチャージ
+		suica.suicaCharge(iphone7);
 
 	}
 

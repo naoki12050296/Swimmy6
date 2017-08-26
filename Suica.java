@@ -1,22 +1,27 @@
 package AbstractAndInterface;
 
-public class Suica {
-	
-	String cardName;
-	int chargePrice;
-	
-	//Apple PayにSuicaを登録するメソッド
-	public void applePaySuicaRegist() {
-		System.out.println(this.cardName+"をApple Payに登録しました");
+public class Suica{
+
+	private int chargePrice_;
+
+	//コンストラクタ
+	public void Suica() {
+
 	}
 
-	//Apple Payにチャージするメソッド
-	public void applePayCharge() {
+	//Apple PayにSuicaを登録するメソッド
+	public void applePaySuicaRegist(Wallet wallet) {
+		wallet.applePayCardRegist("suica");
+	}
+
+	//Suicaにチャージするメソッド
+	public void suicaCharge(Wallet wallet) {
 		System.out.println("チャージ金額を入力してください");
 		int chargePrice = new java.util.Scanner(System.in).nextInt();
-		System.out.println(this.chargePrice+"円をチャージしました");
-	
+		chargePrice_ = chargePrice;
+		System.out.println(this.chargePrice_+"円をチャージしました");
+		wallet.applePaySettlement("Suica",chargePrice);
 	}
 
-	
+
 }
