@@ -2,7 +2,7 @@ package AbstractAndInterface;
 
 public class Iphone7 extends Iphone implements Wallet{
 
-	private String cardName_;
+	public static String cardName_;
 
 	//コンストラクタ
 	public Iphone7() {
@@ -16,9 +16,20 @@ public class Iphone7 extends Iphone implements Wallet{
 
 	//ApplePayにSuicaを登録
 	public void applePayCardRegist(String cardName) {
-		System.out.println(cardName+"がApplePayに登録されました");
-		cardName_ = cardName;
-	}
+		if(cardName == "suica") {
+			System.out.println("suicaがApplePayに登録されました");
+			cardName_ = cardName;
+		} else if(cardName == "id") {
+			System.out.println("idがApplePayに登録されました");
+			cardName_ = cardName;
+		} else if(cardName == "quickpay") {
+			System.out.println("quickpayがApplePayに登録されました");
+			cardName_ = cardName;
+		}else {
+			System.out.println("登録カードが不正です。");
+		}
+
+		}
 
 	//指定したカードでの決済を行う
 	public void applePaySettlement(String cardName,int chargePrice) {
@@ -32,8 +43,7 @@ public class Iphone7 extends Iphone implements Wallet{
 				System.out.println("チャージのみ実施しました");
 			}
 			else {
-				System.out.println("入力された値が不正です。もう一度選んでください");
-				applePaySettlement(cardName,chargePrice);
+				System.out.println("入力された値が不正です。");
 			}
 	}
 
