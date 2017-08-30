@@ -2,7 +2,7 @@ package AbstractAndInterface;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CheckException {
 
 		Iphone7 iphone7 = new Iphone7();
 

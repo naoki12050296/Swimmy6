@@ -1,9 +1,7 @@
 package AbstractAndInterface;
 
 public class Iphone7 extends Iphone implements Wallet{
-
-	public static String cardName_;
-
+	
 	//コンストラクタ
 	public Iphone7() {
 
@@ -19,6 +17,7 @@ public class Iphone7 extends Iphone implements Wallet{
 		if(cardName == "suica") {
 			System.out.println("suicaがApplePayに登録されました");
 			cardName_ = cardName;
+			return;
 		} else if(cardName == "id") {
 			System.out.println("idがApplePayに登録されました");
 			cardName_ = cardName;
@@ -32,7 +31,9 @@ public class Iphone7 extends Iphone implements Wallet{
 		}
 
 	//指定したカードでの決済を行う
-	public void applePaySettlement(String cardName,int chargePrice) {
+	public void applePaySettlement(String cardName ,int chargePrice) throws CheckException {
+		check();
+		if(cardName == "suica") {
 		System.out.println(cardName+"でのお支払いの有無を選んでください");
 		System.out.println("0:お支払いあり 1:お支払いなし");
 		int choice = new java.util.Scanner(System.in).nextInt();
@@ -45,6 +46,10 @@ public class Iphone7 extends Iphone implements Wallet{
 			else {
 				System.out.println("入力された値が不正です。");
 			}
+
+
 	}
 
 }
+}
+

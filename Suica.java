@@ -4,7 +4,7 @@ public class Suica{
 
 	private int chargePrice_;
 	private int chargeSum;
-	public String cardName_;
+	public static String cardName_;
 
 	//コンストラクタ
 	public void Suica() {
@@ -17,8 +17,9 @@ public class Suica{
 	}
 
 	//Suicaにチャージするメソッド
-	public void suicaCharge(Iphone7 wallet) {
+	public void suicaCharge(Iphone7 wallet) throws CheckException {
 		if(Iphone7.cardName_ == "suica") {
+			cardName_ = "suica";
 			System.out.println("チャージ金額を入力してください");
 			int chargePrice = new java.util.Scanner(System.in).nextInt();
 			chargeSum += chargePrice;
@@ -38,7 +39,7 @@ public class Suica{
 		} else {
 			System.out.println("Suicaが登録されていません");
 		}
-		wallet.applePaySettlement("Suica",chargeSum);
+		wallet.applePaySettlement(cardName_,chargeSum);
 	}
 
 }

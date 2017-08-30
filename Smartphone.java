@@ -10,5 +10,5 @@ public abstract class Smartphone {
 
 	//音楽ダウンロードのメソッドを定義
 	abstract void downloadMusic();
-
 }
+

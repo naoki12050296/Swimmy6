@@ -9,5 +9,5 @@ public interface Wallet {
 	public void applePayCardRegist(String cardName);
 
 	//Apple Payで決済するメソッド
-	public void applePaySettlement(String cardName,int price);
+	public void applePaySettlement(String cardName,int price) throws CheckException;
 }
