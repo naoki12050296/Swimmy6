@@ -1,10 +1,13 @@
 package AbstractAndInterface;
 
-public class Suica{
+import java.util.ArrayList;
 
-	private int chargePrice_;
+public class Suica{
+	
+	public static ArrayList<Integer> show = new ArrayList<Integer>();
+
+	public static int chargePrice_;
 	private int chargeSum;
-	public static String cardName_;
 
 	//コンストラクタ
 	public void Suica() {
@@ -18,28 +21,32 @@ public class Suica{
 
 	//Suicaにチャージするメソッド
 	public void suicaCharge(Iphone7 wallet) throws CheckException {
-		if(Iphone7.cardName_ == "suica") {
-			cardName_ = "suica";
+			Iphone7.check("suica");
 			System.out.println("チャージ金額を入力してください");
 			int chargePrice = new java.util.Scanner(System.in).nextInt();
+			chargePrice_ = chargePrice;
+			show.add(chargePrice);
 			chargeSum += chargePrice;
+			wallet.applePaySettlement("jcb");
 			System.out.println("現在のSuica残金は"+this.chargeSum+"円です");
 			System.out.println("続けてチャージしますか？ 0:する 1:しない");
 			int nextCharge = new java.util.Scanner(System.in).nextInt();
 				if(nextCharge == 0) {
 					System.out.println("続けてチャージを行います");
 					suicaCharge(wallet);
-				}
-				else if(nextCharge == 1){
+				} else if(nextCharge == 1) {
 					System.out.println("チャージは終了します");
-				}
-				else {
+				} else {
 					System.out.println("入力された値が不正です");
 				}
-		} else {
-			System.out.println("Suicaが登録されていません");
-		}
-		wallet.applePaySettlement(cardName_,chargeSum);
+	}
+	//履歴を一覧で見るメソッド
+	public void showSuica() {
+		int i = 0;
+			for(i = 0 ; i < show.size(); i++) {
+				int price = show.get(i);
+				System.out.println(price+"円チャージしました");
+			}
 	}
 
 }

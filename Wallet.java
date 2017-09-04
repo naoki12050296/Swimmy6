@@ -2,12 +2,9 @@ package AbstractAndInterface;
 
 public interface Wallet {
 
-	//お会計のメソッドを宣言
-	public void pay();
-
 	//カードを登録するメソッド
-	public void applePayCardRegist(String cardName);
+	public void applePayCardRegist(String cardName) throws CheckException;
 
 	//Apple Payで決済するメソッド
-	public void applePaySettlement(String cardName,int price) throws CheckException;
+	public void applePaySettlement(String cardName) throws CheckException;
 }

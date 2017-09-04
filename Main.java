@@ -15,8 +15,8 @@ public class Main {
 		//音楽をダウンロードする
 		iphone7.downloadMusic();
 
-		//お会計をする
-		iphone7.pay();
+		//JCBカードをApplePayに登録する
+		iphone7.applePayCardRegist("jcb");
 
 		//Suicaクラスをインスタンス化
 		Suica suica = new Suica();
@@ -26,6 +26,18 @@ public class Main {
 
 		//Suicaにチャージ
 		suica.suicaCharge(iphone7);
+
+		//登録したSuicaで決済する
+		iphone7.applePaySettlement("suica");
+
+		//登録したクレジットカード（JCB）で決済する
+		iphone7.applePaySettlement("jcb");
+		
+		//今までのチャージ履歴をみる
+		suica.showSuica();
+
+		//登録していないクレジットカード（VISA）で決済する(例外処理発生)
+		iphone7.applePaySettlement("visa");
 
 	}
 

@@ -1,55 +1,38 @@
 package AbstractAndInterface;
 
+import java.util.ArrayList;
+
 public class Iphone7 extends Iphone implements Wallet{
-	
+
+	public static ArrayList<String> cardlist = new ArrayList<String>();
+
 	//コンストラクタ
 	public Iphone7() {
-
 	}
 
-	//何もしない
-	public void pay() {
-
-	}
-
-	//ApplePayにSuicaを登録
+	//ApplePayにカードを登録
 	public void applePayCardRegist(String cardName) {
-		if(cardName == "suica") {
-			System.out.println("suicaがApplePayに登録されました");
-			cardName_ = cardName;
-			return;
-		} else if(cardName == "id") {
-			System.out.println("idがApplePayに登録されました");
-			cardName_ = cardName;
-		} else if(cardName == "quickpay") {
-			System.out.println("quickpayがApplePayに登録されました");
-			cardName_ = cardName;
-		}else {
-			System.out.println("登録カードが不正です。");
-		}
-
-		}
+		cardlist.add(cardName);
+		System.out.println(cardName+"を登録しました");
+	}
 
 	//指定したカードでの決済を行う
-	public void applePaySettlement(String cardName ,int chargePrice) throws CheckException {
-		check();
-		if(cardName == "suica") {
-		System.out.println(cardName+"でのお支払いの有無を選んでください");
-		System.out.println("0:お支払いあり 1:お支払いなし");
-		int choice = new java.util.Scanner(System.in).nextInt();
-			if(choice == 0) {
-				System.out.println("お会計します");
-			}
-			else if(choice == 1) {
-				System.out.println("チャージのみ実施しました");
-			}
-			else {
-				System.out.println("入力された値が不正です。");
-			}
+	public void applePaySettlement(String cardName) throws CheckException {
+		check(cardName);
+		System.out.println(cardName+"で支払います");
+		}
 
-
+	//カードが登録されているのか調べるメソッド
+	public static void check(String cardName) throws CheckException{
+	boolean exists = cardlist.contains(cardName);
+	if(exists == true) {
+		return;
+	} else {
+		throw new NotRegistCard();
 	}
+}
+}
 
-}
-}
+
+
 
