@@ -2,16 +2,14 @@ package AbstractAndInterface;
 
 public class JCB{
 
-	public static int chargePrice_;
-	private int chargeSum;
 
 	//コンストラクタ
-	public void Suica() {
+	public void Jcb() {
 
 	}
 
 	//Apple PayにJCBカードを登録するメソッド
-	public void applePaySuicaRegist(Iphone7 wallet) {
+	public void applePayJcbRegist(Iphone7 wallet) throws CheckException {
 		wallet.applePayCardRegist("jcb");
 	}
 

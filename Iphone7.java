@@ -18,19 +18,19 @@ public class Iphone7 extends Iphone implements Wallet{
 
 	//指定したカードでの決済を行う
 	public void applePaySettlement(String cardName) throws CheckException {
-		check(cardName);
+		Iphone7.cardCheck(cardName);
 		System.out.println(cardName+"で支払います");
 		}
-
+	
 	//カードが登録されているのか調べるメソッド
-	public static void check(String cardName) throws CheckException{
-	boolean exists = cardlist.contains(cardName);
-	if(exists == true) {
-		return;
-	} else {
-		throw new NotRegistCard();
+	public static void cardCheck(String cardName) throws CheckException{
+		boolean exists = Iphone7.cardlist.contains(cardName);
+		if(exists == true) {
+			return;
+		} else {
+			throw new NotRegistCard();
+		}
 	}
-}
 }
 
 

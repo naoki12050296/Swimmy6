@@ -21,7 +21,7 @@ public class Suica{
 
 	//Suicaにチャージするメソッド
 	public void suicaCharge(Iphone7 wallet) throws CheckException {
-			Iphone7.check("suica");
+			Iphone7.cardCheck("suica");
 			System.out.println("チャージ金額を入力してください");
 			int chargePrice = new java.util.Scanner(System.in).nextInt();
 			chargePrice_ = chargePrice;
@@ -42,8 +42,8 @@ public class Suica{
 	}
 	//履歴を一覧で見るメソッド
 	public void showSuica() {
-		int i = 0;
-			for(i = 0 ; i < show.size(); i++) {
+		System.out.println("過去のチャージ履歴を表示します");
+			for(int i = 0 ; i < show.size(); i++) {
 				int price = show.get(i);
 				System.out.println(price+"円チャージしました");
 			}
